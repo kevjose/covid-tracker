@@ -52,6 +52,7 @@
     ]
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^3.0.0",
     "msw": "^0.21.3"
   }
 }

@@ -2,7 +2,17 @@ module.exports = {
   future: {
     removeDeprecatedGapUtilities: false,
   },
-  purge: ['./src/**/*.js', './src/*.jsx', './src/**/*.ts', './src/*.tsx'],
+  purge: {
+    mode: 'all',
+    content: [
+      './src/components/*.tsx',
+      './src/containers/*.tsx',
+      './src/pages/*.tsx',
+      './src/*.jsx',
+      './src/**/*.ts',
+      './src/*.tsx',
+    ],
+  },
   theme: {
     screens: {
       sm: '640px',
