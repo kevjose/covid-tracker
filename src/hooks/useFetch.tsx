@@ -19,7 +19,7 @@ export default function useFetch<T = unknown>(
   options?: AxiosRequestConfig
 ): State<T> {
   const cache = useRef<Cache<T>>({});
-  let cancelRequest = useRef<Boolean>(false);
+  let cancelRequest = false;
   const initialState: State<T> = {
     status: 'init',
     error: undefined,
@@ -50,11 +50,11 @@ export default function useFetch<T = unknown>(
           const response = await axios(url, options);
           cache.current[url] = response.data;
 
-          if (cancelRequest.current) return;
+          if (cancelRequest) return;
 
           dispatch({ type: 'success', payload: response.data });
         } catch (error) {
-          if (cancelRequest.current) return;
+          if (cancelRequest) return;
 
           dispatch({ type: 'failure', payload: error.message });
         }
@@ -62,7 +62,8 @@ export default function useFetch<T = unknown>(
     };
     fetchData();
     return () => {
-      cancelRequest.current = true;
+      // eslint-disable-next-line
+      cancelRequest = true;
     };
   }, [url, options]);
   return state;
