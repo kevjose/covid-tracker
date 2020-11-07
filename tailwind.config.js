@@ -8,6 +8,7 @@ module.exports = {
       './src/components/*.tsx',
       './src/containers/*.tsx',
       './src/pages/*.tsx',
+      './src/**/*.tsx',
       './src/*.jsx',
       './src/**/*.ts',
       './src/*.tsx',
