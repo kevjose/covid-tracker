@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './styles/tailwind.output.css';
 import App from './App';
+import 'typeface-open-sans';
+import { DrawerProvider } from './contexts/drawer';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <DrawerProvider>
+      <App />
+    </DrawerProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
