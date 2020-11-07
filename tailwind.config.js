@@ -2,7 +2,7 @@ module.exports = {
   future: {
     removeDeprecatedGapUtilities: false,
   },
-  purge: ['./src/**/*.{js,ts,jsx,tsx}'],
+  purge: ['./src/**/*.js', './src/*.js', './src/**/*.ts', './src/*.tsx'],
   theme: {
     screens: {
       sm: '640px',
