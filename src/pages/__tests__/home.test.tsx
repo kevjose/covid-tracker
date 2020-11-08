@@ -113,7 +113,9 @@ test('shows error on api  error', async () => {
   );
   render(<Home />);
   await screen.findByTestId('error');
-  expect(screen.getByText('Error Occurred')).toBeInTheDocument();
+  expect(
+    screen.getByText('An error occurred while loading data!')
+  ).toBeInTheDocument();
 });
 
 test('shows search bar on data load complete', async () => {

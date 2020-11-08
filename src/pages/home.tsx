@@ -4,6 +4,7 @@ import StatsContainer from '../components/StatsContainer';
 import StatsItem from '../components/StatsItem';
 import HomeLoader from '../components/HomeLoader';
 import Table from '../components/Table';
+import Typing from '../components/Typing';
 import { DrawerContext } from '../contexts/drawer';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { formatRegionSummary, formatStatsSummary } from '../utils/summary';
@@ -74,7 +75,9 @@ const Home: React.FC = () => {
         <h3 className="text-16px leading-6 font-medium text-gray-900 flex justify-between">
           World Covid-19 Stats &nbsp;
         </h3>
-        <p data-testid="error">Error Occurred</p>
+        <div data-testid="error">
+          <Typing text="An error occurred while loading data!" />
+        </div>
       </div>
     );
   }
@@ -84,7 +87,7 @@ const Home: React.FC = () => {
       <h3 className="text-16px leading-6 font-medium text-gray-900 flex justify-between">
         World Covid-19 Stats &nbsp;
         <span className="text-indigo-500" role="status">
-          Last Updated &nbsp;
+          <span className="hidden sm:inline">Last Updated</span> &nbsp;
           {new Date(summaryData?.data.generated_on * 1000).toDateString()}
         </span>
       </h3>

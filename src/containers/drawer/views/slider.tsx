@@ -10,9 +10,14 @@ import {
 } from 'recharts';
 import StatsContainer from '../../../components/StatsContainer';
 import StatsItem from '../../../components/StatsItem';
+import Typing from '../../../components/Typing';
 import { DrawerContext } from '../../../contexts/drawer';
 import useFetch from '../../../hooks/useFetch';
-import { HEADERS, REGION_DETAIL_API_STUB } from '../../../utils/contants';
+import {
+  HEADERS,
+  REGION_DETAIL_API_STUB,
+  COLOR_MAP,
+} from '../../../utils/contants';
 
 export default function DrawerSlider() {
   const { state, dispatch }: any = useContext(DrawerContext);
@@ -44,6 +49,7 @@ export default function DrawerSlider() {
       .reverse();
 
   if (!regionDetail) {
+    // this wont be shown
     return <p>No Data!</p>;
   }
 
@@ -74,42 +80,56 @@ export default function DrawerSlider() {
         ))}
       </StatsContainer>
 
-      <div className="">
-        {['idle', 'fetching'].includes(status) && <>Loading...</>}
+      <div>
+        {['idle', 'fetching'].includes(status) && (
+          <div className="w-full my-10 lg:mt-60px px-4 md:px-35px">
+            <Typing text="Loading region data" />
+          </div>
+        )}
 
-        {error && <>An error occurred</>}
+        {error && (
+          <div className="w-full my-10 lg:mt-60px px-4 md:px-35px">
+            <Typing text="An error has occurred while loading region data!" />
+          </div>
+        )}
 
         {data && (
           <ResponsiveContainer width="95%" height={500}>
             <AreaChart data={data} margin={{ top: 0, left: 10, bottom: 100 }}>
               <defs>
-                <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
-                </linearGradient>
-                <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#feb2b2" stopOpacity={0.8} />
-                  <stop offset="95%" stopColor="#feb2b2" stopOpacity={0} />
-                </linearGradient>
+                {HEADERS.map((item) => (
+                  <linearGradient
+                    id={item}
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1"
+                    key={item}
+                  >
+                    <stop
+                      offset="5%"
+                      stopColor={COLOR_MAP[item].fillColor}
+                      stopOpacity={0.8}
+                    />
+                    <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+                  </linearGradient>
+                ))}
               </defs>
               <XAxis dataKey="name" angle={-45} textAnchor="end" />
               <YAxis hide={true} />
               <CartesianGrid strokeDasharray="3 3" />
               <Tooltip />
-              <Area
-                type="monotone"
-                dataKey="total_cases"
-                stroke="#8884d8"
-                fillOpacity={1}
-                fill="url(#colorUv)"
-              />
-              <Area
-                type="monotone"
-                dataKey="deaths"
-                stroke="#feb2b2"
-                fillOpacity={1}
-                fill="url(#colorPv)"
-              />
+
+              {HEADERS.map((item) => (
+                <Area
+                  type="monotone"
+                  dataKey={item}
+                  stroke={COLOR_MAP[item].fillColor}
+                  fillOpacity={1}
+                  fill={`url(#${item})`}
+                  key={item}
+                />
+              ))}
             </AreaChart>
           </ResponsiveContainer>
         )}

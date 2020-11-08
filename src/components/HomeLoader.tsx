@@ -1,5 +1,6 @@
 import React from 'react';
 import StatsContainer from '../components/StatsContainer';
+import Typing from './Typing';
 
 export const HomeLoader: React.FC = () => {
   return (
@@ -14,12 +15,8 @@ export const HomeLoader: React.FC = () => {
           </div>
         ))}
       </StatsContainer>
-      <div className="mt-20 flex flex-col justify-center items-center h-64 min-w-full">
-        <div className="typewriter">
-          <h1>Loading stats.</h1>
-        </div>
-      </div>
-      ;
+
+      <Typing text="Loading stats." />
     </>
   );
 };
