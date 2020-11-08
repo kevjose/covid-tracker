@@ -1,6 +1,6 @@
+/* purgecss start ignore */
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
 
 .menuIcon {
   width: 26px;
@@ -129,3 +129,5 @@
     border-color: orange;
   }
 }
+/* purgecss end ignore */
+@tailwind utilities;
