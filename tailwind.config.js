@@ -15,19 +15,18 @@ module.exports = {
     ],
   },
   theme: {
-    screens: {
-      sm: '640px',
-      md: '768px',
-      lg: '1024px',
-      xl: '1280px',
-      xxl: { min: '1400px' },
-      '2xxl': { min: '1601px' },
-      'xxl-only': { min: '1400px', max: '1600px' },
-      large: { min: '2100px' },
-    },
     boxShadow: {
+      header: '0 2px 4px rgba(0,0,0,0.12)',
+      counter: '0 2px 4px rgba(0,32,25,0.06)',
       stats: '0 3px 6px rgba(0,0,0,0.12)',
+      footer: '3px 0 6px rgba(0,0,0,0.12)',
       float: '0 0 6px rgba(0,0,0,0.12)',
+      floatingUp: '0 5px 10px rgba(0,0,0,0.16)',
+      upside: '0 9px 7px -8px rgba(0,0,0,0.6)',
+      mobile: '0 0px 2px rgba(0,0,0,0.12)',
+      navigation: '0 3px 6px rgba(0, 0, 0, 0.16)',
+      floatBig: '0 0 10px rgba(0,0,0,0.16)',
+      imgFloat: '0 10px 10px rgba(0,0,0,0.16)',
     },
     fontFamily: {
       open: ['Open Sans'],
@@ -47,6 +46,10 @@ module.exports = {
 
     // Extend
     extend: {
+      // screens: {
+      //   'xxl': { raw: '1400px' },
+      //   'xxxl': { raw: '1600px' },
+      // },
       colors: {
         green: '#209F85',
         'green-hover': '#1E957C',
@@ -92,6 +95,9 @@ module.exports = {
       },
       height: {
         drawer: 'calc(100vh - 90px)',
+      },
+      gridColumnStart: {
+        '40px': '40px',
       },
       spacing: {
         9: '2.25rem',
