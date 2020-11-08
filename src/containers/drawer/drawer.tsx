@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { DrawerContext } from '../../contexts/drawer';
 
-import DrawerMenu from './views/menus';
-import DrawerSlider from './views/slider';
+import DrawerMenu from '../../components/menus';
+import DrawerSlider from '../../components/slider';
 
 export const Slider = () => {
   const { state, dispatch }: any = useContext(DrawerContext);

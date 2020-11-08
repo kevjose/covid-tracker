@@ -105,7 +105,7 @@ const Home: React.FC = () => {
       <div className="mt-20">
         <div className="">
           <div className="flex justify-between min-w-full">
-            <div>
+            <div className="w-1/3">
               <label htmlFor="email" className="sr-only">
                 Search
               </label>

@@ -25,10 +25,13 @@ const Header: React.FC = () => {
         </span>
       </button>
 
-      <a className="mr-10 flex  xs:w-1/2 lg:w-1/6" href="/">
+      <div
+        className="mr-10 flex  xs:w-1/2 lg:w-1/6 cursor-pointer"
+        onClick={showMenu}
+      >
         <span className="sr-only">C-19 Tracker</span>
         <code>C-19 Tracker</code>
-      </a>
+      </div>
     </header>
   );
 };

@@ -8,16 +8,12 @@ import {
   CartesianGrid,
   Tooltip,
 } from 'recharts';
-import StatsContainer from '../../../components/StatsContainer';
-import StatsItem from '../../../components/StatsItem';
-import Typing from '../../../components/Typing';
-import { DrawerContext } from '../../../contexts/drawer';
-import useFetch from '../../../hooks/useFetch';
-import {
-  HEADERS,
-  REGION_DETAIL_API_STUB,
-  COLOR_MAP,
-} from '../../../utils/contants';
+import StatsContainer from './StatsContainer';
+import StatsItem from './StatsItem';
+import Typing from './Typing';
+import { DrawerContext } from '../contexts/drawer';
+import useFetch from '../hooks/useFetch';
+import { HEADERS, REGION_DETAIL_API_STUB, COLOR_MAP } from '../utils/contants';
 
 export default function DrawerSlider() {
   const { state, dispatch }: any = useContext(DrawerContext);
